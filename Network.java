@@ -1,4 +1,3 @@
-import javax.print.DocFlavor.STRING;
 
 /** Represents a social network. The network has users, who follow other uesrs.
  *  Each user is an instance of the User class. */
@@ -32,7 +31,7 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         name = capFirstLetter(name); 
-        
+
         if (name.length() == 0) {
             return null;
         }
