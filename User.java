@@ -1,4 +1,4 @@
-
+import java.lang.classfile.components.ClassPrinter.ListNode;
 
 /** Represents a user in a social network. A user is characterized by a name,
  *  a list of user names that s/he follows, and the list's size. */
@@ -45,6 +45,7 @@
 
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
+        name = capFirstLetter(name);
         for (int i = 0; i < fCount; i++){
             if (name.equals(follows[i])){
                 return true;
@@ -72,6 +73,7 @@
     /** Removes the given name from the follows list of this user. If successful, returns true.
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
+        name = capFirstLetter(name);
       if (fCount == 0) {
         return false;
       }
@@ -123,5 +125,18 @@
             ans = ans + follows[i] + " ";
         }
         return ans;
+    }
+    public String capFirstLetter (String name) {
+        if (name == null || name.isEmpty()) {
+            return name;
+        }
+        char first = name.charAt(0);
+        if (Character.isUpperCase(first)) {
+            return name;
+        }
+        if (Character.isLowerCase(first)) {
+            return Character.toUpperCase(first) + name.substring(1);
+        }
+        return name;
     }
 }
