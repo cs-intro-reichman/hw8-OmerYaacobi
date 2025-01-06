@@ -1,4 +1,4 @@
-import javax.print.DocFlavor.STRING;
+
 
 /** Represents a social network. The network has users, who follow other uesrs.
  *  Each user is an instance of the User class. */
