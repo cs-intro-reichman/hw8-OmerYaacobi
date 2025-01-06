@@ -1,4 +1,3 @@
-import java.lang.classfile.components.ClassPrinter.ListNode;
 
 /** Represents a user in a social network. A user is characterized by a name,
  *  a list of user names that s/he follows, and the list's size. */
