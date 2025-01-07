@@ -30,7 +30,7 @@ public class Network {
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
-        name = capFirstLetter(name); 
+       
 
         if (name.length() == 0) {
             return null;
@@ -52,7 +52,7 @@ public class Network {
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
-       name = capFirstLetter(name);
+      
        
        if (this.userCount < users.length) {
             if (! isAUser(name)) {
@@ -70,9 +70,7 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-        name1 = capFirstLetter(name1);
-        name2 = capFirstLetter(name2); 
-
+       
         if (name1.equals(name2)) {
             return false;
         }
@@ -118,7 +116,7 @@ public class Network {
         // the one go is followed by more users.
 
         for (int i = 1; i < this.userCount; i++) {
-            int followedBy = followeeCount(users[i].getName());x
+            int followedBy = followeeCount(users[i].getName());
             
             if (followedBy > mostFollowers) {
                 mostFollowers = followedBy;
