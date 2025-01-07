@@ -40,7 +40,7 @@ public class Network {
         }
         for (int i = 0; i < userCount; i++) {
             String userName = this.users[i].getName();
-            if (userName.equals(name)) {
+            if (userName.equalsIgnoreCase(name)) {
                 return this.users[i];
             }
         }
@@ -52,15 +52,17 @@ public class Network {
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
-      
+      if (name == null) {
+        return false;
+      }
        
        if (this.userCount < users.length) {
             if (! isAUser(name)) {
-                if (name.length() != 0) {
-                    users[userCount] = new User (name);
-                    userCount ++;
-                    return true;
-                }
+                
+                users[userCount] = new User (name);
+                userCount ++;
+                return true;
+                
             }
        }
         return false;
@@ -110,6 +112,10 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
+        if (userCount == 0) {
+            return null;
+        }
+
         String mostPopularUser = users[0].getName();
         int mostFollowers = followeeCount(users[0].getName());
         // I will compare the second user to thr first user' and after that to 
@@ -152,6 +158,9 @@ public class Network {
     
     // Checks if a name is in the network
     public boolean isAUser (String name) {
+        if (name == null) {
+            return false;
+        }
         if (getUser(name) != null) {
             return true;
         } 
